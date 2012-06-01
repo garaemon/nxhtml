@@ -339,6 +339,7 @@ before applying."
     smarty-nxhtml-mumamo-mode
     smarty-html-mumamo-mode
     ;;tt-html-mumamo-mode
+    ejs-nxhtml-mumamo-mode
 
     nxhtml-mumamo-mode
     html-mumamo-mode

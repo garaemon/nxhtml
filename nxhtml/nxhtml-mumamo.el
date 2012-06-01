@@ -290,6 +290,23 @@ This also covers inlined style and javascript."
     )))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; EJS
+
+;;;###autoload
+(define-mumamo-multi-major-mode ejs-nxhtml-mumamo-mode
+  "Turn on multiple major modes for EJS with main mode `nxhtml-mode'.
+This also covers inlined style and javascript."
+  ("EJS nXhtml Family" nxhtml-mode
+   (mumamo-chunk-ejs-comment
+    mumamo-chunk-ejs=
+    mumamo-chunk-ejs
+    mumamo-chunk-inlined-style
+    mumamo-chunk-inlined-script
+    mumamo-chunk-style=
+    mumamo-chunk-onjs=
+    )))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; ASP
 
 ;;;###autoload

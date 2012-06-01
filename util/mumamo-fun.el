@@ -345,6 +345,43 @@ information about <%% ... %%>, % and %%."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; EJS (Embedded JavaScript)
+
+;; See also http://embeddedjs.com/
+
+;; ;;;###autoload
+;; (define-mumamo-multi-major-mode ejs-mumamo-mode
+;;   "Turn on multiple major mode for EJS with unspecified main mode.
+;; Current major-mode will be used as the main major mode."
+;;   ("EJS Family" nil
+;;    (mumamo-chunk-ejs-comment
+;;     mumamo-chunk-ejs=
+;;     mumamo-chunk-ejs
+;;     )))
+
+;;;###autoload
+(define-mumamo-multi-major-mode ejs-html-mumamo-mode
+  "Turn on multiple major modes for EJS with main mode `html-mode'.
+This also covers inlined style and javascript.
+
+The EJS chunks handled are:
+
+       <% JavaScript code -- inline with output %>
+       <%= JavaScript expression -- replace with result %>
+       <%# comment -- ignored -- useful in testing %>"
+  ("EJS Html Family" html-mode
+   (
+    mumamo-chunk-ejs-comment
+    mumamo-chunk-ejs=
+    mumamo-chunk-ejs
+    mumamo-chunk-inlined-style
+    mumamo-chunk-inlined-script
+    mumamo-chunk-style=
+    mumamo-chunk-onjs=
+    )))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; heredoc
 
 ;;;###autoload

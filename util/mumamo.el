@@ -7907,7 +7907,8 @@ This is in the temporary buffer for indentation."
                             )
                           (message "unless t")
                           t)))))
-        (msgerr "indent-line-in-mirror error at pos %d, %s, lines not eq after indentation" line-end major)))
+        ;;(msgerr "indent-line-in-mirror error at pos %d, %s, lines not eq after indentation" line-end major)
+        ))
     (with-current-buffer mirror-buf
       (kill-local-variable 'mumamo-cmirr-no-after-change))
     ))

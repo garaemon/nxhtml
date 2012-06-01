@@ -516,6 +516,7 @@ With prefix ARG fill only current line."
 ;; (major-modep 'django-nxhtml-mumamo-mode)
 ;; (major-modep 'eruby-nxhtml-mumamo-mode)
 ;; (major-modep 'eruby-nxhtml-mumamo-mode)
+;; (major-modep 'ejs-nxhtml-mumamo-mode)
 ;; (major-modep 'smarty-nxhtml-mumamo-mode)
 ;; (major-modep 'embperl-nxhtml-mumamo-mode)
 ;; (major-modep 'laszlo-nxml-mumamo-mode)

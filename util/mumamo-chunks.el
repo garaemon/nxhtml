@@ -1208,6 +1208,38 @@ part of a comment."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; EJS (Embedded JavaScript)
+
+(defun mumamo-chunk-ejs (pos max)
+  "Find <% ... %>.  Return range and 'javascript-mode.
+See `mumamo-possible-chunk-forward' for POS and MAX."
+  ;;(let ((chunk (mumamo-quick-chunk-forward pos max '("<%-?" . t) '("-?%>" . t) 'borders 'javascript-mode)))
+  (let ((chunk (mumamo-quick-chunk-forward pos max '("<%-?" . t) '("-?%>" . t) 'borders 'js2-mode)))
+    (when chunk
+      ;; Put indentation type on 'mumamo-next-indent on the chunk:
+      (setcdr (last chunk) '(mumamo-template-indentor))
+      chunk)))
+
+(defun mumamo-chunk-ejs= (pos max)
+  "Find <%= ... %>.  Return range and 'javascript-mode.
+See `mumamo-possible-chunk-forward' for POS and MAX."
+  (let ((chunk (mumamo-quick-chunk-forward pos max "<%=" '("-?%>" . t) 'borders 'javascript-mode)))
+    (when chunk
+      ;; Put indentation type on 'mumamo-next-indent on the chunk.
+      ;; See nXhtml bug 579581 for a case where it is needed.
+      (setcdr (last chunk) '(mumamo-template-indentor))
+      chunk)))
+
+(defun mumamo-chunk-ejs-comment (pos max)
+  "Find <%# ... %>.  Return range and 'mumamo-comment-mode.
+See `mumamo-possible-chunk-forward' for POS and MAX.
+
+This is needed since otherwise the end marker is thought to be
+part of a comment."
+  (mumamo-quick-chunk-forward pos max "<%#" "%>" 'borders 'mumamo-comment-mode))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; heredoc
 
 (defcustom mumamo-heredoc-modes
